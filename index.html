@@ -37,7 +37,7 @@
         christmasDay.setFullYear(christmasDay.getFullYear() + 1)
 
     // To Calculate the result in milliseconds and then converting into days
-    let result = (Math.round(christmasDay.getTime() - today.getTime()) / (oneDay)).toFixed(0);
+    let result = Math.ceil(Math.round(christmasDay.getTime() - today.getTime()) / (oneDay)).toFixed(0)
 
     let el = document.getElementById('dayContainer');
     let text = "Today is Christmas"
