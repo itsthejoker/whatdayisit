@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>What day is it?</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container text-center mt-5">
+    <div id="dayContainer" class="fs-2"></div>
+    <div class="mt-5">And now you know what day it is. 🎄❤️</div>
+    <a href="https://burrito.monster" target="_blank">burrito.monster</a>
+</div>
+
+
+<script type="application/javascript">
+    // Adapted from https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/
+    // Their code does almost exactly what I need, so this has only minor updates and is
+    // essentially what's on their site lol
+
+    // One day Time in ms (milliseconds)
+    let oneDay = 1000 * 60 * 60 * 24
+
+    // To set present_dates to two variables
+    let today = new Date();
+
+    // 0-11 is Month in JavaScript
+    let christmasDay = new Date(today.getFullYear(), 11, 25)
+
+    // To Calculate next year's Christmas if it's Christmas day or after
+    if (today.getMonth() === 11 && today.getDate() > 24)
+        christmasDay.setFullYear(christmasDay.getFullYear() + 1)
+
+    // To Calculate the result in milliseconds and then converting into days
+    let result = (Math.round(christmasDay.getTime() - today.getTime()) / (oneDay)).toFixed(0);
+
+    let el = document.getElementById('dayContainer');
+    let text = "Today is Christmas"
+
+    for (let i = 0; i < result; i++) {
+        text += " Eve";
+    }
+    text += "!"
+
+    el.innerText = text
+</script>
+</body>
+</html>
